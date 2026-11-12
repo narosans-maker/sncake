@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f5ed">
+    <meta name="description" content="Thoughtful little cakes, made by hand for your favourite kind of day. Meet SN Cake by SAJI.">
+    <title>SN Cake by SAJI — A little cake, a lot of love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+        --cream: #f8f5ed;
+        --paper: #fffdf8;
+        --ink: #263d32;
+        --muted: #6d786e;
+        --green: #355a46;
+        --orange: #e78359;
+        --line: #e9e3d8;
+        --serif: "Playfair Display", Georgia, serif;
+        --sans: "DM Sans", Arial, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+      button, input, select, textarea { font: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+      img { display: block; width: 100%; }
+      .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+      .eyebrow {
+        margin: 0 0 16px;
+        color: var(--orange);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .19em;
+        text-transform: uppercase;
+      }
+      .serif { font-family: var(--serif); font-weight: 500; }
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 0 23px;
+        border: 1px solid var(--green);
+        border-radius: 2px;
+        background: var(--green);
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        transition: background .2s ease, color .2s ease, transform .2s ease;
+        cursor: pointer;
+      }
+      .button:hover { transform: translateY(-2px); background: #294636; }
+      .button--outline { background: transparent; color: var(--green); }
+      .button--outline:hover { background: var(--green); color: white; }
+      .arrow { font-size: 17px; line-height: 1; }
+
+      .announcement {
+        padding: 10px 20px;
+        background: var(--green);
+        color: #fffdf8;
+        text-align: center;
+        font-size: 10px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+      .announcement span { color: #f3b18d; }
+      .header {
+        position: relative;
+        z-index: 3;
+        border-bottom: 1px solid rgba(38, 61, 50, .09);
+      }
+      .nav {
+        display: flex;
+        min-height: 82px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand { display: inline-flex; align-items: center; gap: 10px; }
+      .brand-mark {
+        display: grid;
+        width: 39px;
+        height: 39px;
+        place-items: center;
+        border: 1px solid var(--green);
+        border-radius: 50%;
+        font-family: var(--serif);
+        font-size: 17px;
+      }
+      .brand-name { font-family: var(--serif); font-size: 18px; line-height: 1.05; }
+      .brand-name small {
+        display: block;
+        margin-top: 5px;
+        font-family: var(--sans);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: .17em;
+        text-transform: uppercase;
+      }
+      .nav-links { display: flex; align-items: center; gap: 33px; }
+      .nav-links > a:not(.button) { color: #49594d; font-size: 12px; }
+      .nav-links > a:not(.button):hover { color: var(--orange); }
+      .nav-links .button { min-height: 42px; padding-inline: 18px; font-size: 10px; }
+      .menu-toggle {
+        display: none;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--green);
+        font-size: 19px;
+        cursor: pointer;
+      }
+
+      .hero {
+        display: grid;
+        min-height: 600px;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 7%;
+        padding-block: 55px 69px;
+      }
+      .hero-copy { max-width: 470px; padding-left: 4%; }
+      .hero h1 {
+        margin: 0 0 20px;
+        font-family: var(--serif);
+        font-size: clamp(50px, 6.4vw, 79px);
+        font-weight: 500;
+        letter-spacing: -.055em;
+        line-height: .99;
+      }
+      .hero h1 em { color: var(--orange); font-weight: 500; }
+      .hero-copy > p:not(.eyebrow) {
+        max-width: 360px;
+        margin: 0 0 28px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+      .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+      .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 35px; color: var(--muted); font-size: 11px; }
+      .hero-note::before { width: 23px; height: 1px; background: var(--orange); content: ""; }
+      .hero-art { position: relative; min-width: 0; padding: 0 19px 25px 0; }
+      .hero-photo {
+        height: 465px;
+        border-radius: 48% 48% 2px 2px;
+        object-fit: cover;
+        object-position: center;
+        background: #d7c1a8;
+      }
+      .hero-art::before {
+        position: absolute;
+        z-index: -1;
+        right: 0;
+        bottom: 0;
+        width: 74%;
+        height: 83%;
+        border: 1px solid #d7c9b4;
+        border-radius: 48% 48% 2px 2px;
+        content: "";
+      }
+      .round-note {
+        position: absolute;
+        right: -17px;
+        bottom: 28px;
+        display: grid;
+        width: 106px;
+        height: 106px;
+        place-content: center;
+        border-radius: 50%;
+        background: #f0b18d;
+        color: var(--ink);
+        text-align: center;
+        transform: rotate(9deg);
+      }
+      .round-note strong { font-family: var(--serif); font-size: 24px; font-weight: 500; }
+      .round-note span { margin-top: 2px; font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
+
+      .ticker { overflow: hidden; border-block: 1px solid var(--line); background: #f2eee4; }
+      .ticker-inner {
+        display: flex;
+        min-width: max-content;
+        justify-content: center;
+        gap: 38px;
+        padding: 17px 20px;
+        color: var(--green);
+        font-family: var(--serif);
+        font-size: 16px;
+      }
+      .ticker-inner span { display: flex; align-items: center; gap: 38px; }
+      .ticker-inner span::after { color: var(--orange); content: "✳"; font-family: var(--sans); font-size: 12px; }
+
+      .section { padding-block: 105px; }
+      .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+      .section-heading h2, .story-copy h2, .contact-copy h2 {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(38px, 4.7vw, 57px);
+        font-weight: 500;
+        letter-spacing: -.04em;
+        line-height: 1.08;
+      }
+      .section-heading > p { max-width: 260px; margin: 0 0 5px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+      .filters { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 25px; }
+      .filter {
+        padding: 9px 15px;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background: transparent;
+        color: var(--muted);
+        font-size: 10px;
+        cursor: pointer;
+        transition: all .2s ease;
+      }
+      .filter:hover, .filter[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: white; }
+      .cake-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+      .cake-card { min-width: 0; animation: appear .35s ease both; }
+      .cake-card[hidden] { display: none; }
+      .cake-image-wrap { position: relative; overflow: hidden; background: #e8dfd1; }
+      .cake-image { height: 315px; object-fit: cover; transition: transform .45s ease; }
+      .cake-card:hover .cake-image { transform: scale(1.035); }
+      .cake-tag {
+        position: absolute;
+        top: 13px;
+        left: 13px;
+        padding: 7px 10px;
+        background: var(--paper);
+        color: var(--green);
+        font-size: 9px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .cake-info { display: flex; align-items: start; justify-content: space-between; gap: 12px; padding-top: 16px; }
+      .cake-info h3 { margin: 0; font-family: var(--serif); font-size: 22px; font-weight: 500; }
+      .cake-info p { margin: 6px 0 0; color: var(--muted); font-size: 11px; }
+      .cake-price { padding-top: 3px; color: var(--green); font-size: 12px; font-weight: 700; white-space: nowrap; }
+      .cake-order { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--green); font-size: 10px; font-weight: 700; }
+      .cake-order:hover { color: var(--orange); }
+
+      .story { background: #e9ede4; }
+      .story-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 9%; }
+      .story-images { position: relative; padding: 0 0 28px 22px; }
+      .story-main { height: 445px; object-fit: cover; }
+      .story-detail {
+        position: absolute;
+        right: -19px;
+        bottom: 0;
+        width: 38%;
+        height: 215px;
+        border: 8px solid #e9ede4;
+        object-fit: cover;
+      }
+      .story-copy { max-width: 435px; }
+      .story-copy h2 { margin-bottom: 20px; }
+      .story-copy > p:not(.eyebrow) { margin: 0 0 17px; color: #68756b; font-size: 13px; line-height: 1.9; }
+      .signature { margin-top: 25px; color: var(--green); font-family: var(--serif); font-size: 25px; font-style: italic; }
+      .signature small { display: block; margin-top: 6px; color: var(--muted); font-family: var(--sans); font-size: 9px; font-style: normal; letter-spacing: .16em; text-transform: uppercase; }
+
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 43px; }
+      .step { padding-top: 18px; border-top: 1px solid var(--line); }
+      .step-number { color: var(--orange); font-size: 10px; letter-spacing: .12em; }
+      .step h3 { margin: 15px 0 9px; font-family: var(--serif); font-size: 23px; font-weight: 500; }
+      .step p { max-width: 285px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+
+      .contact { padding-block: 90px; background: var(--green); color: var(--paper); }
+      .contact-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 10%; }
+      .contact-copy .eyebrow { color: #f0b18d; }
+      .contact-copy h2 { max-width: 430px; font-size: clamp(40px, 5vw, 60px); }
+      .contact-copy > p:not(.eyebrow) { max-width: 350px; margin: 17px 0 0; color: #d3ddd4; font-size: 13px; line-height: 1.8; }
+      .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
+      .field { display: grid; gap: 8px; }
+      .field--wide { grid-column: 1 / -1; }
+      .field label { color: #e0e7e0; font-size: 10px; letter-spacing: .08em; }
+      .field input, .field select, .field textarea {
+        width: 100%;
+        min-height: 45px;
+        padding: 12px 13px;
+        border: 1px solid rgba(255,255,255,.26);
+        border-radius: 0;
+        outline: none;
+        background: rgba(255,255,255,.06);
+        color: white;
+        font-size: 12px;
+      }
+      .field input::placeholder, .field textarea::placeholder { color: #c1ccc2; }
+      .field select option { color: var(--ink); }
+      .field textarea { min-height: 92px; resize: vertical; }
+      .contact-form .button { width: fit-content; margin-top: 2px; border-color: #f0b18d; background: #f0b18d; color: var(--ink); }
+      .contact-form .button:hover { background: #f6c4a6; }
+      .form-status { grid-column: 1 / -1; min-height: 18px; margin: 0; color: #f5c5a6; font-size: 11px; line-height: 1.6; }
+
+      .footer { padding-block: 28px; background: #294636; color: #d6dfd6; }
+      .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .footer .brand-mark { border-color: rgba(255,255,255,.6); }
+      .footer .brand-name { color: white; }
+      .footer .brand-name small { color: #bac9bb; }
+      .footer-note { color: #b7c4b8; font-size: 10px; }
+      .back-top { color: white; font-size: 10px; }
+
+      @keyframes appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+      @media (max-width: 800px) {
+        .hero { min-height: auto; gap: 5%; padding-block: 62px; }
+        .hero-copy { padding-left: 0; }
+        .hero-photo { height: 390px; }
+        .cake-image { height: 250px; }
+        .story-layout { gap: 7%; }
+        .story-main { height: 390px; }
+        .story-detail { height: 170px; }
+      }
+      @media (max-width: 620px) {
+        .wrap { width: min(100% - 36px, 460px); }
+        .announcement { font-size: 8px; }
+        .nav { min-height: 70px; }
+        .menu-toggle { display: block; }
+        .nav-links {
+          position: absolute;
+          top: calc(100% - 1px);
+          right: 0;
+          left: 0;
+          display: none;
+          align-items: stretch;
+          gap: 0;
+          padding: 9px 18px 18px;
+          border-bottom: 1px solid var(--line);
+          background: var(--cream);
+        }
+        .nav-links.is-open { display: grid; }
+        .nav-links > a:not(.button) { padding: 13px 3px; border-bottom: 1px solid var(--line); }
+        .nav-links .button { margin-top: 13px; }
+        .hero { grid-template-columns: 1fr; gap: 40px; padding-block: 55px 60px; }
+        .hero-copy { max-width: 440px; }
+        .hero h1 { font-size: clamp(57px, 15vw, 76px); }
+        .hero-art { width: min(100% - 12px, 430px); margin-inline: auto; }
+        .hero-photo { height: min(112vw, 440px); }
+        .round-note { right: -12px; width: 91px; height: 91px; }
+        .round-note strong { font-size: 21px; }
+        .ticker-inner { justify-content: flex-start; font-size: 14px; }
+        .section { padding-block: 74px; }
+        .section-heading { align-items: start; flex-direction: column; gap: 13px; margin-bottom: 22px; }
+        .section-heading > p { max-width: 330px; }
+        .cake-grid { grid-template-columns: 1fr 1fr; gap: 25px 13px; }
+        .cake-image { height: clamp(165px, 52vw, 260px); }
+        .cake-info { flex-direction: column; gap: 4px; padding-top: 11px; }
+        .cake-info h3 { font-size: 19px; }
+        .cake-price { font-size: 11px; }
+        .cake-info p { min-height: 30px; font-size: 10px; line-height: 1.5; }
+        .cake-order { margin-top: 7px; }
+        .story-layout { grid-template-columns: 1fr; gap: 42px; }
+        .story-images { width: min(100% - 10px, 420px); }
+        .story-main { height: min(106vw, 420px); }
+        .story-detail { right: -10px; height: 175px; }
+        .steps { grid-template-columns: 1fr; gap: 22px; margin-top: 29px; }
+        .contact { padding-block: 70px; }
+        .contact-layout { grid-template-columns: 1fr; gap: 35px; }
+        .contact-form { gap: 13px; }
+        .footer-inner { flex-wrap: wrap; }
+        .footer-note { order: 3; width: 100%; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="announcement">Baked fresh for your <span>little celebrations</span> · made with love by SAJI</div>
+    <header class="header">
+      <nav class="nav wrap" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="SN Cake by SAJI home">
+          <span class="brand-mark" aria-hidden="true">SN</span>
+          <span class="brand-name">SN Cake<small>by SAJI</small></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+        <div class="nav-links">
+          <a href="#cakes">The cakes</a>
+          <a href="#story">Our little story</a>
+          <a href="#process">How to order</a>
+          <a class="button" href="#contact">Let's make it sweet <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero wrap" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">A little sweetness, made by hand</p>
+          <h1 class="serif">Cakes for your <em>kind</em> of day.</h1>
+          <p>Soft layers, lovely flavours, and all the little details that make a celebration feel like yours.</p>
+          <div class="hero-actions">
+            <a class="button" href="#cakes">Find your cake <span class="arrow" aria-hidden="true">↘</span></a>
+            <a class="button button--outline" href="#story">Meet SAJI</a>
+          </div>
+          <div class="hero-note">Small-batch cakes, baked with a big heart</div>
+        </div>
+        <div class="hero-art">
+          <img class="hero-photo" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Hand-decorated layered celebration cake">
+          <div class="round-note"><strong>made</strong><span>with love</span></div>
+        </div>
+      </section>
+
+      <div class="ticker" aria-label="Our baking promise">
+        <div class="ticker-inner">
+          <span>Baked fresh</span><span>Thoughtful ingredients</span><span>Made for sharing</span><span>A little extra love</span>
+        </div>
+      </div>
+
+      <section class="section wrap" id="cakes">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Something for the sweet tooth</p>
+            <h2>Meet the favourites.</h2>
+          </div>
+          <p>A few much-loved flavours to get you dreaming. Every cake is made to order and can be made your own.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter cakes">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All the good stuff</button>
+          <button class="filter" type="button" data-filter="classic" aria-pressed="false">Classics</button>
+          <button class="filter" type="button" data-filter="chocolate" aria-pressed="false">Chocolate</button>
+          <button class="filter" type="button" data-filter="fruity" aria-pressed="false">Fruity</button>
+        </div>
+        <div class="cake-grid">
+          <article class="cake-card" data-category="classic">
+            <div class="cake-image-wrap">
+              <img class="cake-image" src="https://images.unsplash.com/photo-1562777717-dc6984f65a63?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Vanilla layer cake with piped cream and fresh berries" loading="lazy">
+              <span class="cake-tag">A crowd favourite</span>
+            </div>
+            <div class="cake-info">
+              <div><h3>Berry &amp; Buttercream</h3><p>Vanilla sponge · berries · soft buttercream</p></div>
+              <span class="cake-price">from $48</span>
+            </div>
+            <a class="cake-order" href="#contact" data-cake="Berry & Buttercream">Make it yours <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="cake-card" data-category="chocolate">
+            <div class="cake-image-wrap">
+              <img class="cake-image" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Rich chocolate celebration cake with delicate decorations" loading="lazy">
+              <span class="cake-tag">For the chocolate lover</span>
+            </div>
+            <div class="cake-info">
+              <div><h3>Midnight Cocoa</h3><p>Dark chocolate · silky ganache · a pinch of salt</p></div>
+              <span class="cake-price">from $52</span>
+            </div>
+            <a class="cake-order" href="#contact" data-cake="Midnight Cocoa">Make it yours <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="cake-card" data-category="fruity">
+            <div class="cake-image-wrap">
+              <img class="cake-image" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Fresh fruit and cream cake finished with strawberries" loading="lazy">
+              <span class="cake-tag">Bright &amp; lovely</span>
+            </div>
+            <div class="cake-info">
+              <div><h3>Strawberry Daydream</h3><p>Fresh strawberries · vanilla cream · tender sponge</p></div>
+              <span class="cake-price">from $50</span>
+            </div>
+            <a class="cake-order" href="#contact" data-cake="Strawberry Daydream">Make it yours <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="story" id="story">
+        <div class="story-layout wrap section">
+          <div class="story-images">
+            <img class="story-main" src="https://images.unsplash.com/photo-1557308536-ee471ef2c390?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="A freshly baked cake being decorated by hand" loading="lazy">
+            <img class="story-detail" src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&amp;fit=crop&amp;w=500&amp;q=85" alt="A close-up of a small sweet treat" loading="lazy">
+          </div>
+          <div class="story-copy">
+            <p class="eyebrow">A little about us</p>
+            <h2>Made slowly. Shared happily.</h2>
+            <p>SN Cake by SAJI began with a simple thing: the feeling of bringing a homemade cake to a table full of people you love.</p>
+            <p>So we keep things personal. Small batches, familiar flavours, and thoughtful finishing touches — baked by SAJI and made to be part of your moments.</p>
+            <div class="signature">With love, SAJI<small>Your neighbourhood cake maker</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="process">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Easy as one, two, yum</p>
+            <h2>Your day, your cake.</h2>
+          </div>
+          <p>Tell us what you have in mind and we'll help bring the sweet part of your celebration to life.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><span class="step-number">01 — TELL US</span><h3>Share your idea</h3><p>Pick a flavour, tell us the occasion, and share any little details you'd love to include.</p></article>
+          <article class="step"><span class="step-number">02 — MAKE IT YOURS</span><h3>We plan the magic</h3><p>We'll chat through the size, design, and timing so everything feels just right.</p></article>
+          <article class="step"><span class="step-number">03 — CELEBRATE</span><h3>Save us a slice</h3><p>Your cake is baked fresh for your day. All that's left is to gather your favourite people.</p></article>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="contact-layout wrap">
+          <div class="contact-copy">
+            <p class="eyebrow">Let's make something lovely</p>
+            <h2>Tell us about your celebration.</h2>
+            <p>Share a few details and your favourite cake idea. SAJI can help you find the right fit for your day.</p>
+          </div>
+          <form class="contact-form">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" autocomplete="name" placeholder="How should we say hello?" required>
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="cake-choice">Cake on your mind</label>
+              <select id="cake-choice" name="cake">
+                <option value="">I'd love a recommendation</option>
+                <option>Berry &amp; Buttercream</option>
+                <option>Midnight Cocoa</option>
+                <option>Strawberry Daydream</option>
+                <option>Something custom</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="date">Celebration date</label>
+              <input id="date" name="date" type="date">
+            </div>
+            <div class="field field--wide">
+              <label for="details">A little more about it</label>
+              <textarea id="details" name="details" placeholder="Occasion, size, colours, or anything else you'd like SAJI to know..."></textarea>
+            </div>
+            <button class="button" type="submit">Send a sweet note <span class="arrow" aria-hidden="true">↗</span></button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner wrap">
+        <a class="brand" href="#home" aria-label="SN Cake by SAJI, back to top">
+          <span class="brand-mark" aria-hidden="true">SN</span>
+          <span class="brand-name">SN Cake<small>by SAJI</small></span>
+        </a>
+        <span class="footer-note">Made with love, and a little buttercream.</span>
+        <a class="back-top" href="#home">Back to the top ↑</a>
+      </div>
+    </footer>
+
+    <script>
+      const filterButtons = document.querySelectorAll(".filter");
+      const cakeCards = document.querySelectorAll(".cake-card");
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      const cakeChoice = document.querySelector("#cake-choice");
+      const contactForm = document.querySelector(".contact-form");
+      const formStatus = document.querySelector(".form-status");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const category = button.dataset.filter;
+          filterButtons.forEach((filter) => filter.setAttribute("aria-pressed", String(filter === button)));
+          cakeCards.forEach((card) => {
+            card.hidden = category !== "all" && card.dataset.category !== category;
+          });
+        });
+      });
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+        menuToggle.textContent = isOpen ? "☰" : "×";
+        navLinks.classList.toggle("is-open", !isOpen);
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation menu");
+          menuToggle.textContent = "☰";
+        });
+      });
+
+      document.querySelectorAll(".cake-order").forEach((link) => {
+        link.addEventListener("click", () => {
+          cakeChoice.value = link.dataset.cake;
+        });
+      });
+
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        formStatus.textContent = "Thanks, " + contactForm.elements.name.value + "! This page is a static demo, so your note hasn't been sent. Connect the form to SAJI's inbox to receive enquiries.";
+      });
+    </script>
+  </body>
+</html>
