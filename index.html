@@ -249,6 +249,25 @@
       .cake-price { padding-top: 3px; color: var(--green); font-size: 12px; font-weight: 700; white-space: nowrap; }
       .cake-order { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--green); font-size: 10px; font-weight: 700; }
       .cake-order:hover { color: var(--orange); }
+      .menu-pricing {
+        margin: -4px 0 24px;
+        padding: 14px 17px;
+        border-left: 2px solid var(--orange);
+        background: #f0ece2;
+        color: var(--green);
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .menu-pricing strong { font-weight: 700; }
+      .gallery-coming {
+        margin-top: 27px;
+        padding: 19px 21px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.8;
+      }
+      .gallery-coming strong { display: block; margin-bottom: 3px; color: var(--green); font-family: var(--serif); font-size: 19px; font-weight: 500; }
 
       .story { background: #e9ede4; }
       .story-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 9%; }
@@ -280,6 +299,11 @@
       .contact-copy .eyebrow { color: #f0b18d; }
       .contact-copy h2 { max-width: 430px; font-size: clamp(40px, 5vw, 60px); }
       .contact-copy > p:not(.eyebrow) { max-width: 350px; margin: 17px 0 0; color: #d3ddd4; font-size: 13px; line-height: 1.8; }
+      .contact-details { display: grid; gap: 13px; margin-top: 27px; }
+      .contact-detail { display: grid; gap: 5px; width: fit-content; }
+      .contact-detail span { color: #b7c9b9; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
+      .contact-detail a { color: white; font-size: 13px; }
+      .contact-detail a:hover { color: #f0b18d; }
       .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
       .field { display: grid; gap: 8px; }
       .field--wide { grid-column: 1 / -1; }
@@ -424,6 +448,7 @@
           </div>
           <p>A few much-loved flavours to get you dreaming. Every cake is made to order and can be made your own.</p>
         </div>
+        <p class="menu-pricing">Celebration cakes start at <strong>$160</strong> <span aria-hidden="true">·</span> Cake pops start at <strong>$1 each</strong></p>
         <div class="filters" role="group" aria-label="Filter cakes">
           <button class="filter" type="button" data-filter="all" aria-pressed="true">All the good stuff</button>
           <button class="filter" type="button" data-filter="classic" aria-pressed="false">Classics</button>
@@ -438,7 +463,7 @@
             </div>
             <div class="cake-info">
               <div><h3>Berry &amp; Buttercream</h3><p>Vanilla sponge · berries · soft buttercream</p></div>
-              <span class="cake-price">from $48</span>
+              <span class="cake-price">from $160</span>
             </div>
             <a class="cake-order" href="#contact" data-cake="Berry & Buttercream">Make it yours <span aria-hidden="true">↗</span></a>
           </article>
@@ -449,7 +474,7 @@
             </div>
             <div class="cake-info">
               <div><h3>Midnight Cocoa</h3><p>Dark chocolate · silky ganache · a pinch of salt</p></div>
-              <span class="cake-price">from $52</span>
+              <span class="cake-price">from $160</span>
             </div>
             <a class="cake-order" href="#contact" data-cake="Midnight Cocoa">Make it yours <span aria-hidden="true">↗</span></a>
           </article>
@@ -460,11 +485,15 @@
             </div>
             <div class="cake-info">
               <div><h3>Strawberry Daydream</h3><p>Fresh strawberries · vanilla cream · tender sponge</p></div>
-              <span class="cake-price">from $50</span>
+              <span class="cake-price">from $160</span>
             </div>
             <a class="cake-order" href="#contact" data-cake="Strawberry Daydream">Make it yours <span aria-hidden="true">↗</span></a>
           </article>
         </div>
+        <aside class="gallery-coming">
+          <strong>More cake photos are on the way!</strong>
+          We're also working on a feature that will let you show SAJI exactly how you'd like your cake to look.
+        </aside>
       </section>
 
       <section class="story" id="story">
@@ -504,6 +533,10 @@
             <p class="eyebrow">Let's make something lovely</p>
             <h2>Tell us about your celebration.</h2>
             <p>Share a few details and your favourite cake idea. SAJI can help you find the right fit for your day.</p>
+            <div class="contact-details" aria-label="Order contact information">
+              <div class="contact-detail"><span>Call or text to order</span><a href="tel:+16476671546">(647) 667-1546</a></div>
+              <div class="contact-detail"><span>Email</span><a href="mailto:sajindylan@gmail.com">sajindylan@gmail.com</a></div>
+            </div>
           </div>
           <form class="contact-form">
             <div class="field">
@@ -521,6 +554,7 @@
                 <option>Berry &amp; Buttercream</option>
                 <option>Midnight Cocoa</option>
                 <option>Strawberry Daydream</option>
+                <option>Cake pops</option>
                 <option>Something custom</option>
               </select>
             </div>
